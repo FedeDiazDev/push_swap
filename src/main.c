@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:19:46 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2023/11/21 16:47:09 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:20:12 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,16 @@ void	ft_push_swap(t_stack **stack_a, t_stack **stack_b)
 		ft_sa(stack_a);
 	else if (s_size == 3 && !(is_sorted(stack_a)))
 		order_three(stack_a);
-	else if (s_size == 4 && !(is_sorted(stack_a)))
-		order_four(stack_a, stack_b);
-	else if (s_size == 5 && !(is_sorted(stack_a)))
-		order_five(stack_a, stack_b);
-	else if (s_size <= 100 && !(is_sorted(stack_a)))
-		loops_for_hundred(stack_a, stack_b, s_size);
-	else if (s_size > 100 && !(is_sorted(stack_a)))
-		loops_for_five_hundred(stack_a, stack_b, s_size);
+	else
+		order_all(stack_a, stack_b, s_size);
+	// else if (s_size == 4 && !(is_sorted(stack_a)))
+	// 	order_four(stack_a, stack_b);
+	// else if (s_size == 5 && !(is_sorted(stack_a)))
+	// 	order_five(stack_a, stack_b);
+	// else if (s_size <= 100 && !(is_sorted(stack_a)))
+	// 	loops_for_hundred(stack_a, stack_b, s_size);
+	// else if (s_size > 100 && !(is_sorted(stack_a)))
+	// 	loops_for_five_hundred(stack_a, stack_b, s_size);
 }
 
 void	ft_free_split(char **str)
