@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:00:10 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2023/11/21 13:22:39 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:24:11 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	rotate(t_stack **stack)
 void	ft_ra(t_stack **stack_a)
 {
 	rotate(stack_a);
-	ft_printf("%s\n", "ra");
+	// ft_printf("%s\n", "ra");
 }
 
 void	ft_rb(t_stack **stack_b)

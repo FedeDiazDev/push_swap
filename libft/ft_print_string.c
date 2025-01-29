@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:33:44 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2023/09/29 15:47:12 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:06:26 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	ft_print_string(char *str)
 {
 	int	count;
-	int	flag;
 
-	flag = 0;
 	count = 0;
 	if (!str)
 		return (ft_print_string("(null)"));

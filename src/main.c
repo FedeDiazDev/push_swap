@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:19:46 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2024/10/30 13:20:12 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:03:52 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_push_swap(t_stack **stack_a, t_stack **stack_b)
 	else if (s_size == 3 && !(is_sorted(stack_a)))
 		order_three(stack_a);
 	else
-		order_all(stack_a, stack_b, s_size);
+		start_ordering(stack_a, stack_b, s_size);
 	// else if (s_size == 4 && !(is_sorted(stack_a)))
 	// 	order_four(stack_a, stack_b);
 	// else if (s_size == 5 && !(is_sorted(stack_a)))

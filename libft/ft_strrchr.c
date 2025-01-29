@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdiaz-gu <fdiaz-gu@student.42madrid>       +#+  +:+       +#+        */
+/*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 17:10:44 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2023/09/21 17:03:50 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:06:09 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*last_c;
-	int		i;
 
-	i = 0;
 	last_c = NULL;
 	while (*s)
 	{

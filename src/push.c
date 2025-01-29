@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:00:15 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2023/11/21 13:19:37 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:24:06 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_a, stack_b);
-	ft_printf("%s\n", "pb");
+	// ft_printf("%s\n", "pb");
 }
