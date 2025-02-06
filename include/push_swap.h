@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:50:44 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2025/01/29 17:04:20 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:33:39 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
+	int				pos;
+	int				cost_a;
+	int				cost_b;
+	int				target_pos;
 	struct s_stack	*next;
 }t_stack;
 
