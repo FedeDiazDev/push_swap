@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:19:46 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2025/01/29 17:03:52 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:14:54 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	main(int argc, char **argv)
 	check_duplicated(&stack_a);
 	assign_index(&stack_a, 1);
 	ft_push_swap(&stack_a, &stack_b);
+	print_stack(&stack_a);
 	free_list(stack_a);
 	free_list(stack_b);
 }

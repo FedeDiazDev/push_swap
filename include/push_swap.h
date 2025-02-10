@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:50:44 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2025/01/31 16:33:39 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:14:37 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,6 @@ int			ft_atoi_ps(const char *str);
 void		loops_for_hundred(t_stack **stack_a, t_stack **stack_b, int size);
 void		loops_for_five_hundred(t_stack **stack_a,
 				t_stack **stack_b, int size);
+void print_stack(t_stack **stack);
+
 #endif
