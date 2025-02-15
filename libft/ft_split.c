@@ -40,7 +40,7 @@ static char	*ft_extract_word(char const *s, char c, int *i)
 	return (ft_substr(s, start, end - start));
 }
 
-static void	ft_free_split(char **str, size_t words)
+static void	ft_free_split_ps(char **str, size_t words)
 {
 	while (words-- > 0)
 	{
@@ -67,7 +67,7 @@ char	**ft_split(char const *s, char c)
 			str[z] = ft_extract_word(s, c, &i);
 			if (str[z] == NULL)
 			{
-				ft_free_split(str, ft_count_words(s, c));
+				ft_free_split_ps(str, ft_count_words(s, c));
 				return (NULL);
 			}
 			z++;
