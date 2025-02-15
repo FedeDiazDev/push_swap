@@ -12,6 +12,16 @@
 
 #include "../include/push_swap.h"
 
+void calculate_lower_pos(t_stack **stack_a, t_stack **stack_b)
+{
+
+	while (*stack_b)
+	{
+		assing_lower_target(stack_a, stack_b);
+		stack_b = &(*stack_b)->next;
+	}
+}
+
 int	find_min_without_stack(t_stack **stack)
 {
 	int	min;
@@ -25,57 +35,37 @@ int	find_min_without_stack(t_stack **stack)
 	}
 	return (min);
 }
-
-void	loops_for_hundred(t_stack **stack_a, t_stack **stack_b, int size)
+void assign_costs(t_stack **stack_b, int size_a, int size_b)
 {
-	int	count;
-	int	i;
-	int	chunk;
+	t_stack *aux_b;
 
-	chunk = size / 5;
-	i = 1;
-	count = 1;
-	while ((*stack_a))
+	aux_b = *stack_b;
+	while (aux_b)
 	{
-		while (count <= (chunk * i))
-		{		
-			order_by_chunks(stack_a, stack_b,
-				(chunk * i + 1) - chunk, chunk * i);
-			count++;
-		}
-		i++;
-	}
-	while ((*stack_b))
-	{
-		max_to_top(stack_b);
-		ft_pa(stack_a, stack_b);
+		if ((aux_b->pos + 1) <= size_b / 2 + 1)
+			aux_b->cost_b = aux_b->pos;
+		else
+			aux_b->cost_b = aux_b->pos - size_b;
+		if ((aux_b->target_pos + 1) <= size_a / 2 + 1)
+			aux_b->cost_a = aux_b->target_pos;
+		else
+			aux_b->cost_a = aux_b->target_pos - size_a;
+		aux_b = aux_b->next;
 	}
 }
 
-void	loops_for_five_hundred(t_stack **stack_a, t_stack **stack_b, int size)
+int max_index(t_stack **stack)
 {
-	int	count;
-	int	i;
-	int	chunk;
+	int max;
 
-	chunk = size / 11;
-	i = 1;
-	count = 1;
-	while ((*stack_a))
+	max = (*stack)->index;
+	while (*stack)
 	{
-		while (count <= (chunk * i))
-		{		
-			order_by_chunks(stack_a, stack_b,
-				(chunk * i + 1) - chunk, chunk * i);
-			count++;
-		}
-		i++;
+		if ((*stack)->index > max)
+			max = (*stack)->index;
+		stack = &(*stack)->next;
 	}
-	while ((*stack_b))
-	{
-		max_to_top(stack_b);
-		ft_pa(stack_a, stack_b);
-	}
+	return (max);
 }
 
 int	ft_atoi_ps(const char *str)

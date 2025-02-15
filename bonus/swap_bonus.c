@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 11:00:10 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2025/01/29 16:24:11 by fdiaz-gu         ###   ########.fr       */
+/*   Created: 2023/11/02 11:00:12 by fdiaz-gu          #+#    #+#             */
+/*   Updated: 2025/01/29 17:53:37 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	rotate(t_stack **stack)
+static void	ft_swap(t_stack **stack)
 {
-	t_stack	*aux;
-	t_stack	*last;
+	t_stack	*aux_stack;
 
-	aux = *stack;
+	if (ft_lstsize_ps(stack) < 2)
+		return ;
+	aux_stack = *stack;
 	*stack = (*stack)->next;
-	last = ft_lstlast_ps(*stack);
-	aux->next = NULL;
-	last->next = aux;
+	aux_stack->next = (*stack)->next;
+	(*stack)->next = aux_stack;
 }
 
-void	ft_ra(t_stack **stack_a)
+void	ft_sa(t_stack **stack_a)
 {
-	rotate(stack_a);
-	ft_printf("%s\n", "ra");
+	ft_swap(stack_a);
 }
 
-void	ft_rb(t_stack **stack_b)
+void	ft_sb(t_stack **stack_b)
 {
-	rotate(stack_b);
-	ft_printf("%s\n", "rb");
+	ft_swap(stack_b);
 }
 
-void	ft_rr(t_stack **stack_a, t_stack **stack_b)
+void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 {
-	rotate(stack_a);
-	rotate(stack_b);
-	ft_printf("%s\n", "rr");
+	ft_swap(stack_a);
+	ft_swap(stack_b);
 }

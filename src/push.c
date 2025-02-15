@@ -33,5 +33,5 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_a, stack_b);
-	// ft_printf("%s\n", "pb");
+	ft_printf("%s\n", "pb");
 }

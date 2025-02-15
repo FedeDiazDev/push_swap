@@ -27,18 +27,15 @@ void	rotate(t_stack **stack)
 void	ft_ra(t_stack **stack_a)
 {
 	rotate(stack_a);
-	ft_printf("%s\n", "ra");
 }
 
 void	ft_rb(t_stack **stack_b)
 {
 	rotate(stack_b);
-	ft_printf("%s\n", "rb");
 }
 
 void	ft_rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	ft_printf("%s\n", "rr");
 }

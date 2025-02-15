@@ -61,19 +61,22 @@ void		free_list(t_stack *stack);
 void		ft_free_split(char **str);
 void		assign_index(t_stack **stack, int index);
 int			find_min_without_stack(t_stack **stack);
-int			find_first_occurrence(t_stack **stack, int first, int last);
-int			find_last_occurrence(t_stack **stack, int first, int last);
 int			find_pos_index(t_stack **stack, int nb);
 int			find_pos_value(t_stack **stack, int nb);
-void		order_by_chunks(t_stack **stack_a, t_stack **stack_b,
-				int first, int last);
-void		min_to_top(t_stack **stack);
-void		max_to_top(t_stack **stack);
 int			find_max(t_stack **stack);
 int			ft_atoi_ps(const char *str);
-void		loops_for_hundred(t_stack **stack_a, t_stack **stack_b, int size);
-void		loops_for_five_hundred(t_stack **stack_a,
-				t_stack **stack_b, int size);
-void print_stack(t_stack **stack);
+int			max_index(t_stack **stack);
+void		assign_costs(t_stack **stack_b, int size_a, int size_b);
+void		print_stack(t_stack **stack);
+void		assign_positions(t_stack **stack);
+int calc_rotations(t_stack **stack_a, int size);
+void order_a(t_stack **stack);
+int absv(int num);
+void exec_move(t_stack **stack_a, t_stack **stack_b, int movs_a, int movs_b);
+void calculate_optimal(t_stack **stack_a, t_stack **stack_b);
+void assing_lower_target(t_stack **stack_a, t_stack **stack_b);
+void calculate_lower_pos(t_stack **stack_a, t_stack **stack_b);
+
+
 
 #endif

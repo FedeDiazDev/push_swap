@@ -36,14 +36,6 @@ void	ft_push_swap(t_stack **stack_a, t_stack **stack_b)
 		order_three(stack_a);
 	else
 		start_ordering(stack_a, stack_b, s_size);
-	// else if (s_size == 4 && !(is_sorted(stack_a)))
-	// 	order_four(stack_a, stack_b);
-	// else if (s_size == 5 && !(is_sorted(stack_a)))
-	// 	order_five(stack_a, stack_b);
-	// else if (s_size <= 100 && !(is_sorted(stack_a)))
-	// 	loops_for_hundred(stack_a, stack_b, s_size);
-	// else if (s_size > 100 && !(is_sorted(stack_a)))
-	// 	loops_for_five_hundred(stack_a, stack_b, s_size);
 }
 
 void	ft_free_split(char **str)
@@ -72,7 +64,8 @@ int	main(int argc, char **argv)
 	check_duplicated(&stack_a);
 	assign_index(&stack_a, 1);
 	ft_push_swap(&stack_a, &stack_b);
-	print_stack(&stack_a);
-	free_list(stack_a);
-	free_list(stack_b);
+	if (stack_a)
+		free_list(stack_a);
+	if (stack_b)
+		free_list(stack_b);
 }

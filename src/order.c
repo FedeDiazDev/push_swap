@@ -12,76 +12,6 @@
 
 #include "../include/push_swap.h"
 
-void print_stack(t_stack **stack)
-{
-	while (*stack)
-	{
-		printf("[%d] -> %d\n", (*stack)->index, (*stack)->value);
-		stack = &(*stack)->next;
-	}
-}
-
-void	assign_costs(t_stack **b, int size_a, int size_b)
-{
-	t_stack	*aux_b;
-
-	aux_b = *b;
-	while (aux_b)
-	{
-		if ((aux_b->pos + 1) <= size_b / 2 + 1)
-			aux_b->cost_b = aux_b->pos;
-		else
-			aux_b->cost_b = aux_b->pos - size_b;
-		if ((aux_b->target_pos + 1) <= size_a / 2 + 1)
-			aux_b->cost_a = aux_b->target_pos;
-		else
-			aux_b->cost_a = aux_b->target_pos - size_a;
-		aux_b = aux_b->next;
-	}
-}
-
-int	max_index(t_stack **stack)
-{
-	int		max;
-
-	max = (*stack)->index;
-	while (*stack)
-	{
-		if ((*stack)->index > max)
-			max = (*stack)->index;
-		stack = &(*stack)->next;
-	}
-	return (max);
-}
-
-void assing_lower_target(t_stack **stack_a, t_stack **stack_b)
-{
-	int closer_idx;
-	int target_pos;
-	t_stack *current;
-
-	closer_idx = max_index(stack_a);
-	current = *stack_a;
-	while (current)
-	{
-		if ((*stack_b)->index < current->index && closer_idx > current->index)
-		{
-			closer_idx = current->index;
-			target_pos = current->pos;
-		}
-		current = current->next;
-	}
-	(*stack_b)->target_pos = target_pos;
-}
-void calculate_lower_pos(t_stack **stack_a, t_stack **stack_b)
-{
-	while (*stack_b)
-	{
-		assing_lower_target(stack_a, stack_b);
-		stack_b = &(*stack_b)->next;
-	}
-}
-
 void assign_positions(t_stack **stack)
 {
 	int pos = 0;
@@ -130,32 +60,43 @@ void order_three(t_stack **stack_a)
 		}
 	}
 }
+static void push_all_except_three(t_stack **stack_a, t_stack **stack_b, int size)
+{
+	int half;
+	int current_size;
+
+	half = (size / 2) + 1;
+	current_size = size;
+	while (current_size > half && current_size >= 3)
+	{
+		if ((*stack_a)->index < half)
+			(ft_pb(stack_a, stack_b), current_size--);
+		else
+			ft_ra(stack_a);
+	}
+	while (current_size > 3)
+	{
+		if ((*stack_a)->index == size || (*stack_a)->index == size - 1 || (*stack_a)->index == size - 2)
+			ft_ra(stack_a);
+		else
+			(ft_pb(stack_a, stack_b), current_size--);
+	}
+	if (!is_sorted(stack_a))
+		order_three(stack_a);
+}
 
 void start_ordering(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	int half;
-	int aux_index;
-
-	aux_index = size - 2;
-	half = (size / 2) + 1;
-	while (size > half)
+	push_all_except_three(stack_a, stack_b, size);
+	while (*stack_b)
 	{
-		if ((*stack_a)->index < half)
-			(ft_pb(stack_a, stack_b), size--);
-		else
-			ft_ra(stack_a);
+		assign_positions(stack_a);
+		assign_positions(stack_b);
+		calculate_lower_pos(stack_a, stack_b);
+		assign_costs(stack_b, ft_lstsize_ps(stack_a), ft_lstsize_ps(stack_b));
+		calculate_optimal(stack_a, stack_b);
 	}
-	while (size > 3)
-	{
-		if ((*stack_a)->index < aux_index)
-			(ft_pb(stack_a, stack_b), size--);
-		else
-			ft_ra(stack_a);
-	}
-	order_three(stack_a);
-	assign_positions(stack_a);
-	assign_positions(stack_b);
-	assign_costs(stack_b, ft_lstsize_ps(stack_a), ft_lstsize_ps(stack_b));
+	order_a(stack_a);
 }
 
 // printf("STACK A:\n");

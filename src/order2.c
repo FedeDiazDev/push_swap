@@ -12,118 +12,76 @@
 
 #include "../include/push_swap.h"
 
-int	find_first_occurrence(t_stack **stack, int first, int last)
+int calc_rotations(t_stack **stack_a, int size)
 {
-	int	i;
-	int	pos;
-
-	pos = 1;
-	while (*stack)
+	assign_positions(stack_a);
+	while ((*stack_a))
 	{
-		i = first;
-		while (i <= last)
+		if ((*stack_a)->index == 1)
 		{
-			if ((*stack)->index == i)
-				return ((*stack)->index);
-			i++;
+			if (((*stack_a)->pos + 1) <= (size / 2 + 1))
+				return ((*stack_a)->pos);
+			else
+				return ((*stack_a)->pos - size);
 		}
-		stack = &(*stack)->next;
+		stack_a = &(*stack_a)->next;
 	}
-	return (pos);
+	return (0);
 }
 
-int	find_last_occurrence(t_stack **stack, int first, int last)
+void order_a(t_stack **stack)
 {
-	int	i;
-	int	pos;
+	int rotations;
 
-	pos = 1;
-	while (*stack)
+	rotations = calc_rotations(stack, ft_lstsize_ps(stack));
+	while (rotations != 0)
 	{
-		i = first;
-		while (i <= last)
-		{
-			if ((*stack)->index == i)
-				pos = (*stack)->index;
-			i++;
-		}
-		stack = &(*stack)->next;
-	}
-	return (pos);
-}
-
-void	order_by_chunks(t_stack **stack_a, t_stack **stack_b,
-	int first, int last)
-{
-	int	lst_size;
-	int	first_el;
-	int	last_el;	
-
-	lst_size = ft_lstsize_ps(stack_a);
-	if (*stack_a)
-	{
-		first_el = find_pos_index(stack_a,
-				find_first_occurrence(stack_a, first, last));
-		last_el = find_pos_index(stack_a,
-				find_last_occurrence(stack_a, first, last));
-		if ((first_el - 1) <= (lst_size - last_el))
-		{
-			while (first_el-- >= 1 && first_el > 0)
-				ft_ra(stack_a);
-		}
+		if (rotations < 0)
+			(ft_rra(stack), rotations++);
 		else
-		{
-			while (last_el++ <= lst_size)
-				ft_rra(stack_a);
-		}		
-		ft_pb(stack_a, stack_b);
-	}	
-}
-
-void	min_to_top(t_stack **stack)
-{	
-	int	pos;
-	int	size;
-
-	if (! stack || !(*stack))
-		return ;
-	size = ft_lstsize_ps(stack);
-	pos = find_pos_value(stack, find_min(stack));
-	if (pos != 1 && pos <= size / 2)
-	{
-		while (pos > 1)
-		{
-			ft_rb(stack);
-			pos--;
-		}
-	}
-	else if (pos != 1 && pos > size / 2)
-	{
-		while (pos <= size)
-		{
-			ft_rrb(stack);
-			pos++;
-		}
+			(ft_ra(stack), rotations--);
 	}
 }
 
-void	max_to_top(t_stack **stack)
+int absv(int num)
 {
-	int	pos;
-	int	size;
+	if (num < 0)
+		return (num * -1);
+	return (num);
+}
 
-	if (! stack || !(*stack))
-		return ;
-	size = ft_lstsize_ps(stack);
-	pos = find_pos_value(stack, find_max(stack));
-	if (pos != 1 && pos < size / 2)
+void exec_move(t_stack **stack_a, t_stack **stack_b, int movs_a, int movs_b)
+{
+	while (movs_a > 0 && movs_b > 0)
+		(ft_rr(stack_a, stack_b), movs_a--, movs_b--);
+	while (movs_a < 0 && movs_b < 0)
+		(ft_rrr(stack_a, stack_b), movs_a++, movs_b++);
+	while (movs_a > 0)
+		(ft_ra(stack_a), movs_a--);
+	while (movs_a < 0)
+		(ft_rra(stack_a), movs_a++);
+	while (movs_b > 0)
+		(ft_rb(stack_b), movs_b--);
+	while (movs_b < 0)
+		(ft_rrb(stack_b), movs_b++);
+}
+
+void calculate_optimal(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack *best_node;
+	t_stack *aux_b;
+
+	best_node = *stack_b;
+	aux_b = *stack_b;
+
+	while (aux_b)
 	{
-		while (pos-- > 1)
-			ft_rb(stack);
+		if ((absv(best_node->cost_a) + absv(best_node->cost_b)) > (absv(aux_b->cost_a) + absv(aux_b->cost_b)))
+		{
+			best_node = aux_b;
+		}
+		aux_b = aux_b->next;
 	}
-	else if (pos != 1 && pos >= size / 2)
-	{
-		while (pos++ <= size)
-			ft_rrb(stack);
-	}
+	exec_move(stack_a, stack_b, best_node->cost_a, best_node->cost_b);
+	ft_pa(stack_a, stack_b);
 }
