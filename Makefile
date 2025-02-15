@@ -11,7 +11,9 @@
 # **************************************************************************** #
 
 SRC_DIR = ./src
+BONUS_DIR = ./bonus
 SRC = check_args.c main.c push.c reverse_rotate.c rotate.c swap.c utils.c utils2.c utils3.c order.c order2.c utils4.c
+BONUS = check_bonus.c checker_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c init_bonus.c list_bonus.c push_bonus.c reverse_rotate_bonus.c rotate_bonus.c split_bonus.c swap_bonus.c utils_bonus.c aux_bonus.c
 
 OBJS = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
 BONUS_OBJS = $(addprefix $(BONUS_DIR)/, $(BONUS:.c=.o))
@@ -27,6 +29,8 @@ LIBFT = -L$(LIBFT_DIR) $(LIBFT_DIR)$(LIBFT_A)
 
 NAME = push_swap
 
+BONUS_NAME = checker
+
 all: $(NAME)
 
 .SILENT: $(OBJS)
@@ -34,16 +38,19 @@ $(NAME): $(OBJS)
 	@make bonus -C $(LIBFT_DIR)
 	@gcc $(CFLAGS) $(OBJS)  $(LIBFT) -o $(NAME)
 
-B = .
+
+bonus: $(BONUS_OBJS)
+	@gcc $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
+
 
 clean:
 	$(RM) $(OBJS)  $(LIBFT_A)
 
 fclean: clean
-	@$(RM) $(NAME) $(B_NAME)  $(OBJS)
+	@$(RM) $(NAME) $(BONUS_NAME)  $(OBJS) $(BONUS_OBJS)
 	@make -C $(LIBFT_DIR) fclean
 
 re: fclean
 	@make all
 
-.PHONY: all  clean fclean re
+.PHONY: all  clean fclean re bonus
