@@ -6,13 +6,13 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:21:14 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2023/11/21 14:57:50 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/02/16 12:26:15 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int calc_rotations(t_stack **stack_a, int size)
+int	calc_rotations(t_stack **stack_a, int size)
 {
 	assign_positions(stack_a);
 	while ((*stack_a))
@@ -29,9 +29,9 @@ int calc_rotations(t_stack **stack_a, int size)
 	return (0);
 }
 
-void order_a(t_stack **stack)
+void	order_a(t_stack **stack)
 {
-	int rotations;
+	int	rotations;
 
 	rotations = calc_rotations(stack, ft_lstsize_ps(stack));
 	while (rotations != 0)
@@ -43,14 +43,14 @@ void order_a(t_stack **stack)
 	}
 }
 
-int absv(int num)
+int	absv(int num)
 {
 	if (num < 0)
 		return (num * -1);
 	return (num);
 }
 
-void exec_move(t_stack **stack_a, t_stack **stack_b, int movs_a, int movs_b)
+void	exec_move(t_stack **stack_a, t_stack **stack_b, int movs_a, int movs_b)
 {
 	while (movs_a > 0 && movs_b > 0)
 		(ft_rr(stack_a, stack_b), movs_a--, movs_b--);
@@ -66,17 +66,17 @@ void exec_move(t_stack **stack_a, t_stack **stack_b, int movs_a, int movs_b)
 		(ft_rrb(stack_b), movs_b++);
 }
 
-void calculate_optimal(t_stack **stack_a, t_stack **stack_b)
+void	calculate_optimal(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *best_node;
-	t_stack *aux_b;
+	t_stack	*best_node;
+	t_stack	*aux_b;
 
 	best_node = *stack_b;
 	aux_b = *stack_b;
-
 	while (aux_b)
 	{
-		if ((absv(best_node->cost_a) + absv(best_node->cost_b)) > (absv(aux_b->cost_a) + absv(aux_b->cost_b)))
+		if ((absv(best_node->cost_a) + absv(best_node->cost_b))
+			> (absv(aux_b->cost_a) + absv(aux_b->cost_b)))
 		{
 			best_node = aux_b;
 		}

@@ -6,15 +6,17 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:38:51 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2025/02/10 19:13:54 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/02/16 12:25:23 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void assign_positions(t_stack **stack)
+void	assign_positions(t_stack **stack)
 {
-	int pos = 0;
+	int	pos;
+
+	pos = 0;
 	while (*stack)
 	{
 		(*stack)->pos = pos;
@@ -23,7 +25,7 @@ void assign_positions(t_stack **stack)
 	}
 }
 
-void assing_target(t_stack **stack_a, t_stack **stack_b)
+void	assing_target(t_stack **stack_a, t_stack **stack_b)
 {
 	while (*stack_b)
 	{
@@ -32,7 +34,7 @@ void assing_target(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void order_three(t_stack **stack_a)
+void	order_three(t_stack **stack_a)
 {
 	if ((*stack_a)->value < (*stack_a)->next->value)
 	{
@@ -60,10 +62,11 @@ void order_three(t_stack **stack_a)
 		}
 	}
 }
-static void push_all_except_three(t_stack **stack_a, t_stack **stack_b, int size)
+
+void	push_all_except_three(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	int half;
-	int current_size;
+	int	half;
+	int	current_size;
 
 	half = (size / 2) + 1;
 	current_size = size;
@@ -76,7 +79,8 @@ static void push_all_except_three(t_stack **stack_a, t_stack **stack_b, int size
 	}
 	while (current_size > 3)
 	{
-		if ((*stack_a)->index == size || (*stack_a)->index == size - 1 || (*stack_a)->index == size - 2)
+		if ((*stack_a)->index == size || (*stack_a)->index == size - 1
+			|| (*stack_a)->index == size - 2)
 			ft_ra(stack_a);
 		else
 			(ft_pb(stack_a, stack_b), current_size--);
@@ -85,7 +89,7 @@ static void push_all_except_three(t_stack **stack_a, t_stack **stack_b, int size
 		order_three(stack_a);
 }
 
-void start_ordering(t_stack **stack_a, t_stack **stack_b, int size)
+void	start_ordering(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	push_all_except_three(stack_a, stack_b, size);
 	while (*stack_b)
@@ -98,8 +102,3 @@ void start_ordering(t_stack **stack_a, t_stack **stack_b, int size)
 	}
 	order_a(stack_a);
 }
-
-// printf("STACK A:\n");
-// print_stack(stack_a);
-// printf("STACK B:\n");
-// print_stack(stack_b);

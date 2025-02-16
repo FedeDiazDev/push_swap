@@ -6,14 +6,14 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:40:56 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2023/11/21 13:29:43 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/02/16 12:26:58 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
 void	ft_error(void)
-{	
+{
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
@@ -52,7 +52,7 @@ void	assign_index(t_stack **stack, int index)
 		assign_index(&first, (index + 1));
 }
 
-void print_stack(t_stack **stack)
+void	print_stack(t_stack **stack)
 {
 	while (*stack)
 	{
@@ -61,11 +61,11 @@ void print_stack(t_stack **stack)
 	}
 }
 
-void assing_lower_target(t_stack **stack_a, t_stack **stack_b)
+void	assing_lower_target(t_stack **stack_a, t_stack **stack_b)
 {
-	int closer_idx;
-	int target_pos;
-	t_stack *current;
+	int		closer_idx;
+	int		target_pos;
+	t_stack	*current;
 
 	closer_idx = max_index(stack_a);
 	current = *stack_a;

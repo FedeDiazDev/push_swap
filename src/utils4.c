@@ -6,15 +6,14 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:16:52 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2023/11/21 16:24:19 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/02/16 12:27:57 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void calculate_lower_pos(t_stack **stack_a, t_stack **stack_b)
+void	calculate_lower_pos(t_stack **stack_a, t_stack **stack_b)
 {
-
 	while (*stack_b)
 	{
 		assing_lower_target(stack_a, stack_b);
@@ -35,9 +34,10 @@ int	find_min_without_stack(t_stack **stack)
 	}
 	return (min);
 }
-void assign_costs(t_stack **stack_b, int size_a, int size_b)
+
+void	assign_costs(t_stack **stack_b, int size_a, int size_b)
 {
-	t_stack *aux_b;
+	t_stack	*aux_b;
 
 	aux_b = *stack_b;
 	while (aux_b)
@@ -54,9 +54,9 @@ void assign_costs(t_stack **stack_b, int size_a, int size_b)
 	}
 }
 
-int max_index(t_stack **stack)
+int	max_index(t_stack **stack)
 {
-	int max;
+	int	max;
 
 	max = (*stack)->index;
 	while (*stack)

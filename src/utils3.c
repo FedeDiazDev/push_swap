@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:58:09 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2023/11/21 13:33:25 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/02/16 12:23:44 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	find_max(t_stack **stack)
 		if (max < (*stack)->value)
 			max = (*stack)->value;
 		stack = &(*stack)->next;
-	}	
+	}
 	return (max);
 }
 

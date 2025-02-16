@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 12:13:44 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2023/11/21 16:46:58 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/02/16 12:23:25 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_stack	*check_nb_in_argv(char *str, t_stack **stack_a)
 	while (str[++i])
 	{
 		if (str[i] == 32)
-		{			
+		{
 			nb_aux = ft_split(str, 32);
 			break ;
 		}
