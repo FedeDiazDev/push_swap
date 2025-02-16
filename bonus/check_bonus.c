@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/16 12:11:38 by fdiaz-gu          #+#    #+#             */
+/*   Updated: 2025/02/16 12:13:34 by fdiaz-gu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap_bonus.h"
 
 static int	ft_strcmp(const char *s1, const char *s2)
@@ -39,10 +51,7 @@ static int	reverse_movements(char *line, t_stack **stack_a, t_stack **stack_b)
 	if (!ft_strcmp(line, "rrr\n"))
 		return (ft_rrr(stack_a, stack_b), 1);
 	else
-	{
-		ft_error_cmd(line, stack_a, stack_b);
-		return (0);
-	}
+		(ft_error_cmd(line, stack_a, stack_b), 0);
 	return (0);
 }
 
@@ -54,7 +63,7 @@ static int	check_and_execute(char *line, t_stack **stack_a, t_stack **stack_b)
 		return (ft_sb(stack_b), 1);
 	if (!ft_strcmp(line, "ss\n"))
 		return (ft_ss(stack_a, stack_b), 1);
-	if (!ft_strcmp(line, "pa\n")) 
+	if (!ft_strcmp(line, "pa\n"))
 		return (ft_pa(stack_a, stack_b), 1);
 	if (!ft_strcmp(line, "pb\n"))
 		return (ft_pb(stack_a, stack_b), 1);
@@ -66,21 +75,20 @@ static int	check_and_execute(char *line, t_stack **stack_a, t_stack **stack_b)
 		return (ft_rr(stack_a, stack_b), 1);
 	else
 		return (reverse_movements(line, stack_a, stack_b));
-
 }
 
-int check_commands(t_stack **stack_a, t_stack **stack_b)
+int	check_commands(t_stack **stack_a, t_stack **stack_b)
 {
-    char    *line;
+	char	*line;
 
-    line = get_next_line(0);
-    while (line && *line != '\n')
-    {
+	line = get_next_line(0);
+	while (line && *line != '\n')
+	{
 		if (!check_and_execute(line, stack_a, stack_b))
 			return (0);
 		free(line);
-        line = get_next_line(0);
-    }
+		line = get_next_line(0);
+	}
 	free(line);
 	return (1);
 }

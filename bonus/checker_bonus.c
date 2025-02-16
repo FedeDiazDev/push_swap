@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/16 12:13:45 by fdiaz-gu          #+#    #+#             */
+/*   Updated: 2025/02/16 12:15:36 by fdiaz-gu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap_bonus.h"
 
 void	check_duplicated(t_stack **stack_a)
@@ -19,40 +31,40 @@ void	check_duplicated(t_stack **stack_a)
 	}
 }
 
-int is_sorted(t_stack **stack)
+int	is_sorted(t_stack **stack)
 {
-    if (!stack)
-        return (0);
-    while ((*stack)->next != NULL)
-    {
-        if ((*stack)->value > ((*stack)->next)->value)
-            return (0);
-        stack = &(*stack)->next;
-    }
-    return (1);
+	if (!stack)
+		return (0);
+	while ((*stack)->next != NULL)
+	{
+		if ((*stack)->value > ((*stack)->next)->value)
+			return (0);
+		stack = &(*stack)->next;
+	}
+	return (1);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_stack *stack_a;
-    t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
-    stack_a = NULL;
-    stack_b = NULL;
-    if (argc == 1 || (argc == 2 && !argv[1][0]))
-        return (1);
-    stack_a = resort_ags(argv, &stack_a);
-    check_duplicated(&stack_a);
-    if (check_commands(&stack_a, &stack_b))
-    {
-        if (stack_a && is_sorted(&stack_a) && !stack_b)
-            write(1, "OK\n", 3);
-        else
-            write(1, "KO\n", 3);
-    }
-    if (stack_a)
-        free_list(stack_a);
-    if (stack_b)
-        free_list(stack_b);
-    return (0);
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
+	stack_a = resort_ags(argv, &stack_a);
+	check_duplicated(&stack_a);
+	if (check_commands(&stack_a, &stack_b))
+	{
+		if (stack_a && is_sorted(&stack_a) && !stack_b)
+			write(1, "OK\n", 3);
+		else
+			write(1, "KO\n", 3);
+	}
+	if (stack_a)
+		free_list(stack_a);
+	if (stack_b)
+		free_list(stack_b);
+	return (0);
 }

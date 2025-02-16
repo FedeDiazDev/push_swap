@@ -6,7 +6,7 @@
 /*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:50:44 by fdiaz-gu          #+#    #+#             */
-/*   Updated: 2025/02/10 19:14:37 by fdiaz-gu         ###   ########.fr       */
+/*   Updated: 2025/02/16 12:08:37 by fdiaz-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_stack
 	int				cost_b;
 	int				target_pos;
 	struct s_stack	*next;
-}t_stack;
+}			t_stack;
 
 void		start_ordering(t_stack **stack_a, t_stack **stack_b, int size);
 t_stack		*ft_get_penultimate(t_stack *stack);
@@ -69,14 +69,13 @@ int			max_index(t_stack **stack);
 void		assign_costs(t_stack **stack_b, int size_a, int size_b);
 void		print_stack(t_stack **stack);
 void		assign_positions(t_stack **stack);
-int calc_rotations(t_stack **stack_a, int size);
-void order_a(t_stack **stack);
-int absv(int num);
-void exec_move(t_stack **stack_a, t_stack **stack_b, int movs_a, int movs_b);
-void calculate_optimal(t_stack **stack_a, t_stack **stack_b);
-void assing_lower_target(t_stack **stack_a, t_stack **stack_b);
-void calculate_lower_pos(t_stack **stack_a, t_stack **stack_b);
-
-
+int			calc_rotations(t_stack **stack_a, int size);
+void		order_a(t_stack **stack);
+int			absv(int num);
+void		exec_move(t_stack **stack_a, t_stack **stack_b, int movs_a,
+				int movs_b);
+void		calculate_optimal(t_stack **stack_a, t_stack **stack_b);
+void		assing_lower_target(t_stack **stack_a, t_stack **stack_b);
+void		calculate_lower_pos(t_stack **stack_a, t_stack **stack_b);
 
 #endif

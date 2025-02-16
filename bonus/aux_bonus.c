@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   aux_bonus.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/16 12:11:06 by fdiaz-gu          #+#    #+#             */
+/*   Updated: 2025/02/16 12:11:27 by fdiaz-gu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap_bonus.h"
 
 size_t	ft_strlen(const char *str)
@@ -23,6 +35,7 @@ char	*ft_strdup(const char *s1)
 	ptr[size_len] = '\0';
 	return (ptr);
 }
+
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;

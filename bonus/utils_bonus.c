@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fdiaz-gu <fdiaz-gu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/16 12:20:32 by fdiaz-gu          #+#    #+#             */
+/*   Updated: 2025/02/16 12:20:46 by fdiaz-gu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap_bonus.h"
 
 void	free_list(t_stack *stack)
@@ -26,7 +38,7 @@ void	ft_free_split(char **str)
 }
 
 void	ft_error(void)
-{	
+{
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
